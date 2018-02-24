@@ -159,5 +159,19 @@ export default {
     background: #eee;
   }
 }
-
+@media (max-width: 600px) {
+  .q-toolbar-title {
+    font-size: 1em;
+  }
+  h2 {
+    font-size:1em;
+  }
+  .panes {
+    flex-direction: column;
+  }
+  .map {
+    width: 100vw;
+    flex-shrink: 0;
+  }
+}
 </style>

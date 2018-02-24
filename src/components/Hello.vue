@@ -144,4 +144,15 @@ export default {
 .q-card {
   width: calc(25% - 20px);
 }
+@media (max-width: 600px) {
+  .q-toolbar-title {
+    font-size: 1em;
+  }
+  .food {
+    font-size: 5em;
+  }
+  .q-card {
+    width: calc(100% - 20px);
+  }
+}
 </style>
