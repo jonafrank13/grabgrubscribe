@@ -43,18 +43,18 @@
           Everyday
         </div>
       </q-carousel>
-      <q-card v-for="n in 10" inline class="bigger q-ma-sm">
+      <q-card v-for="restaurant in restaurants" inline class="bigger q-ma-sm">
         <q-card-media>
-          <img src="~assets/food11.jpg">
+          <img :src="restaurant.image">
         </q-card-media>
         <q-card-title class="relative-position">
           <q-btn fab round color="primary" icon="place" class="absolute" style="top: 0; right: 8px; transform: translateY(-50%);" />
-          <div class="ellipsis">Cafe Basilico Cafe Basilico Cafe Basilico Cafe Basilico Cafe Basilico Cafe Basilico Cafe Basilico</div>
-          <q-rating slot="subtitle" v-model="stars" :max="5" />
+          <div class="ellipsis">{{restaurant.name}}</div>
+          <q-rating slot="subtitle" v-model="restaurant.stars" :max="5" />
         </q-card-title>
         <q-card-main>
-          <p>$・Italian, Cafe</p>
-          <p class="text-faded">Small plates, salads & sandwiches in an intimate setting.</p>
+          <p>{{restaurant.type}}</p>
+          <p class="text-faded">{{restaurant['short-text']}}</p>
         </q-card-main>
         <q-card-separator />
         <q-card-actions>
@@ -105,7 +105,78 @@ export default {
   },
   data () {
     return {
-      stars: 3
+      stars: 3,
+      restaurants: [{
+        'name': 'Cafe Basilico',
+        'stars': 4,
+        'type': 'Italian, Cafe',
+        'image': '/statics/food11.jpg',
+        'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
+      },
+      {
+        'name': 'Rustom Corner',
+        'stars': 3.5,
+        'type': 'Indian, Srilankan',
+        'image': '/statics/food22.jpeg',
+        'short-text': 'Lip smacking curries and spices right from the sub continent.'
+      },
+      {
+        'name': 'Pilimco',
+        'stars': 3,
+        'type': 'Desserts, Confectionery',
+        'image': '/statics/food33.jpeg',
+        'short-text': 'A sweet lover\' paradise'
+      },
+      {
+        'name': 'Ciclo cafe',
+        'stars': 4,
+        'type': 'Continental',
+        'image': '/statics/food33.jpg',
+        'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
+      },
+      {
+        'name': 'Taste of India',
+        'stars': 4,
+        'type': 'Indian',
+        'image': '/statics/food44.jpeg',
+        'short-text': 'Spicy, mouth watering food from India'
+      },
+      {
+        'name': 'KFC',
+        'stars': 3,
+        'type': 'Chicken',
+        'image': '/statics/food55.jpeg',
+        'short-text': 'Fast food'
+      },
+      {
+        'name': 'Mc Donald\'s',
+        'stars': 3,
+        'type': 'Burgers and Fries',
+        'image': '/statics/food66.jpeg',
+        'short-text': 'Fast Food Joint'
+      },
+      {
+        'name': 'Cafe Basilico',
+        'stars': 4,
+        'type': 'Italian, Cafe',
+        'image': '/statics/food77.jpeg',
+        'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
+      },
+      {
+        'name': 'Lime Road',
+        'stars': 2.5,
+        'type': 'Chips & Fish',
+        'image': '/statics/food88.jpeg',
+        'short-text': 'Home made food in a cozy setting'
+      },
+      {
+        'name': 'Yellow Pepper',
+        'stars': 5,
+        'type': 'Ethiopian',
+        'image': '/statics/food22.jpg',
+        'short-text': 'Authentic ethiopian cuisine'
+      }
+      ]
     }
   }
 }
@@ -144,12 +215,18 @@ export default {
 .q-card {
   width: calc(25% - 20px);
 }
+.q-card-media > img {
+  height: 230px; 
+}
+.q-card-container {
+  min-height: 120px;
+}
 @media (max-width: 600px) {
   .q-toolbar-title {
     font-size: 1em;
   }
   .food {
-    font-size: 5em;
+    font-size: 4em;
   }
   .q-card {
     width: calc(100% - 20px);
