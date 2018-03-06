@@ -45,7 +45,7 @@
       </q-carousel>
       <q-card v-for="restaurant in restaurants" inline class="bigger q-ma-sm">
         <q-card-media>
-          <img :src="restaurant.image">
+          <img :src="restaurant.image" >
         </q-card-media>
         <q-card-title class="relative-position">
           <q-btn fab round color="primary" icon="place" class="absolute" style="top: 0; right: 8px; transform: translateY(-50%);" />
