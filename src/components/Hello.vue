@@ -110,70 +110,70 @@ export default {
         'name': 'Cafe Basilico',
         'stars': 4,
         'type': 'Italian, Cafe',
-        'image': '/statics/food11.jpg',
+        'image': 'statics/food11.jpg',
         'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
       },
       {
         'name': 'Rustom Corner',
         'stars': 3.5,
         'type': 'Indian, Srilankan',
-        'image': '/statics/food22.jpeg',
+        'image': 'statics/food22.jpeg',
         'short-text': 'Lip smacking curries and spices right from the sub continent.'
       },
       {
         'name': 'Pilimco',
         'stars': 3,
         'type': 'Desserts, Confectionery',
-        'image': '/statics/food33.jpeg',
+        'image': 'statics/food33.jpeg',
         'short-text': 'A sweet lover\' paradise'
       },
       {
         'name': 'Ciclo cafe',
         'stars': 4,
         'type': 'Continental',
-        'image': '/statics/food33.jpg',
+        'image': 'statics/food33.jpg',
         'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
       },
       {
         'name': 'Taste of India',
         'stars': 4,
         'type': 'Indian',
-        'image': '/statics/food44.jpeg',
+        'image': 'statics/food44.jpeg',
         'short-text': 'Spicy, mouth watering food from India'
       },
       {
         'name': 'KFC',
         'stars': 3,
         'type': 'Chicken',
-        'image': '/statics/food55.jpeg',
+        'image': 'statics/food55.jpeg',
         'short-text': 'Fast food'
       },
       {
         'name': 'Mc Donald\'s',
         'stars': 3,
         'type': 'Burgers and Fries',
-        'image': '/statics/food66.jpeg',
+        'image': 'statics/food66.jpeg',
         'short-text': 'Fast Food Joint'
       },
       {
         'name': 'Cafe Basilico',
         'stars': 4,
         'type': 'Italian, Cafe',
-        'image': '/statics/food77.jpeg',
+        'image': 'statics/food77.jpeg',
         'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
       },
       {
         'name': 'Lime Road',
         'stars': 2.5,
         'type': 'Chips & Fish',
-        'image': '/statics/food88.jpeg',
+        'image': 'statics/food88.jpeg',
         'short-text': 'Home made food in a cozy setting'
       },
       {
         'name': 'Yellow Pepper',
         'stars': 5,
         'type': 'Ethiopian',
-        'image': '/statics/food22.jpg',
+        'image': 'statics/food22.jpg',
         'short-text': 'Authentic ethiopian cuisine'
       }
       ]
