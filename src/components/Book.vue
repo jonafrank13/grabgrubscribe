@@ -20,12 +20,12 @@
         </router-link>
       </q-btn>
       <q-btn flat>
-        <router-link :to="'book'">
+        <router-link :to="'login'">
           <q-icon name="person_pin" />
         </router-link>
       </q-btn>
       <q-btn flat>
-        <router-link :to="'book'">
+        <router-link :to="'login'">
           <q-icon name="add_shopping_cart" />
         </router-link>
       </q-btn>

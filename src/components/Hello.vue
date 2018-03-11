@@ -20,12 +20,12 @@
         </router-link>
       </q-btn>
       <q-btn flat>
-        <router-link :to="'book'">
+        <router-link :to="'login'">
           <q-icon name="person_pin" />
         </router-link>
       </q-btn>
       <q-btn flat>
-        <router-link :to="'book'">
+        <router-link :to="'login'">
           <q-icon name="add_shopping_cart" />
         </router-link>
       </q-btn>
@@ -59,9 +59,8 @@
         <q-card-separator />
         <q-card-actions>
           <q-btn flat round icon="event" />
-          <q-btn flat>5:30PM</q-btn>
-          <q-btn flat>7:30PM</q-btn>
-          <q-btn flat>9:00PM</q-btn>
+          <q-btn flat>Lunch-12:30PM</q-btn>
+          <q-btn flat>Dinner-7:30PM</q-btn>
           <q-btn flat color="primary">Reserve</q-btn>
         </q-card-actions>
       </q-card>
