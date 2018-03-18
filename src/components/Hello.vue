@@ -43,7 +43,7 @@
           Everyday
         </div>
       </q-carousel>
-      <q-card v-for="restaurant in restaurants" inline class="bigger q-ma-sm">
+      <q-card v-for="restaurant in restaurants" @click="$router.push('restaurant')" inline class="bigger q-ma-sm">
         <q-card-media>
           <img :src="restaurant.image" >
         </q-card-media>

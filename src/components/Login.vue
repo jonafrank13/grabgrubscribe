@@ -1,10 +1,24 @@
  <template>
     <div class="center">
         <div class="inner">
-        <h2>Log In</h2>
-        <p>Log in to your account to start reserving!</p>
+        <div>
+            <q-toggle v-model="isLoginMode" color="secondary" left-label=true keep-color=true label="Sign up" />
+            <span class="q-option-label">Login</span>
+        </div>
+        <h2 v-if="isLoginMode">Log In</h2>
+        <h2 v-else>Sign Up</h2>
+        <p v-if="isLoginMode">Log in to your account to start reserving!</p>
+        <p v-else>Sign up and create your account for an exciting journey!</p>
         <div class="alert-danger" v-if="error">
             <p>{{ error }}</p>
+        </div>
+        <div v-if="!isLoginMode" class="form-group">
+            <input
+            type="text"
+            class="form-control"
+            placeholder="Email"
+            v-model="credentials.email"
+            >
         </div>
         <div class="form-group">
             <input
@@ -22,21 +36,36 @@
             v-model="credentials.password"
             >
         </div>
-        <button class="submit-btn" @click="submit()">Login</button>
+        <div v-if="!isLoginMode" class="form-group">
+            <input
+            type="password"
+            class="form-control"
+            placeholder="Confirm Password"
+            v-model="credentials.password"
+            >
+        </div>
+        <button class="submit-btn" @click="submit()">
+            <span v-if="isLoginMode">Login</span>
+            <span v-else>Sign Up</span>
+        </button>
         </div>
     </div>
   </template>
 
   <script>
+  import { QToggle } from 'quasar'
   import auth from '../auth'
   export default {
+    components: { QToggle },
     data () {
       return {
         credentials: {
           username: '',
-          password: ''
+          password: '',
+          email: ''
         },
-        error: ''
+        error: '',
+        isLoginMode: true
       }
     },
     methods: {
@@ -45,7 +74,13 @@
           username: this.credentials.username,
           password: this.credentials.password
         }
-        auth.login(this, credentials, '/')
+        if (this.isLoginMode) {
+          auth.login(this, credentials, '/')
+        }
+        else {
+          credentials.email = this.credentials.email
+          auth.signup(this, credentials, '/')
+        }
       }
     }
 
@@ -58,7 +93,9 @@
       justify-content: center;
       height: 100vh;
       width: 100vw;
-      background: #fc8019;
+      background: url('../assets/bgpic.png') no-repeat;
+      background-size: cover;
+      background-color: #fc8019;
   }
   .alert-danger {
       color: tomato;
