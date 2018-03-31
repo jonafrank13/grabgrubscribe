@@ -3,11 +3,11 @@
     <q-toolbar color="primary" slot="header">
       <q-btn flat>
         <router-link :to="'/'">
-          <img class="logo" src="~assets/grab.png">
+          <img class="logo" src="~assets/logo.jpeg">
         </router-link>
       </q-btn>
       <q-toolbar-title>
-        Grab GrubScribe
+        Eat As You Go
       </q-toolbar-title>
       <q-btn flat>
         <router-link :to="'book'">
@@ -37,13 +37,13 @@
           Enjoy 
         </div>
         <div slot="slide" class="food food-2">
-          Delecious Food
+          Delicious Food
         </div>
         <div slot="slide" class="food food-3">
           Everyday
         </div>
       </q-carousel>
-      <q-card v-for="restaurant in restaurants" @click="$router.push('restaurant')" inline class="bigger q-ma-sm">
+      <q-card v-for="restaurant in restaurants" :key="restaurant.name" @click="openRestaurant(restaurant)" inline class="bigger q-ma-sm">
         <q-card-media>
           <img :src="restaurant.image" >
         </q-card-media>
@@ -106,60 +106,126 @@ export default {
     return {
       stars: 3,
       restaurants: [{
-        'name': 'Cafe Basilico',
+        'name': 'Sunny\'s olive Tree',
         'stars': 4,
-        'type': 'Italian, Cafe',
-        'image': 'statics/food11.jpg',
-        'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
-      },
-      {
-        'name': 'Rustom Corner',
-        'stars': 3.5,
-        'type': 'Indian, Srilankan',
-        'image': 'statics/food22.jpeg',
-        'short-text': 'Lip smacking curries and spices right from the sub continent.'
-      },
-      {
-        'name': 'Pilimco',
-        'stars': 3,
-        'type': 'Desserts, Confectionery',
-        'image': 'statics/food33.jpeg',
-        'short-text': 'A sweet lover\' paradise'
-      },
-      {
-        'name': 'Ciclo cafe',
-        'stars': 4,
-        'type': 'Continental',
-        'image': 'statics/food33.jpg',
-        'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
-      },
-      {
-        'name': 'Taste of India',
-        'stars': 4,
-        'type': 'Indian',
+        'type': 'Salads',
         'image': 'statics/food44.jpeg',
-        'short-text': 'Spicy, mouth watering food from India'
+        'short-text': 'Small plates and yummy salads in an intimate setting.',
+        'menu': [
+          {
+            'label': 'Salad Box',
+            'cost': '4£',
+            'desc': 'Salad box comes with half a slice of bread (Lettuce, mix cabbage, red pepper, potato salad, hummas, sundried tomatoes, 1Dolmades, couscous, mix beans, greek salad)'
+          },
+          {
+            'label': 'Greek Salad',
+            'cost': '3£',
+            'desc': 'Lettuce, mix cabbage, red pepper, sundried tomatoes'
+          },
+          {
+            'label': 'Coriander Salad',
+            'cost': '3£',
+            'desc': 'Tomato and Red Onion'
+          }
+        ]
       },
       {
-        'name': 'KFC',
-        'stars': 3,
-        'type': 'Chicken',
-        'image': 'statics/food55.jpeg',
-        'short-text': 'Fast food'
+        'name': 'Barbican Express',
+        'stars': 4.5,
+        'type': 'Pizzas',
+        'image': 'statics/food1.jpg',
+        'short-text': 'Best Pizzas in London',
+        'menu': [
+          {
+            'label': 'Margherita',
+            'cost': '7.95£',
+            'desc': 'Cheese and Tomato Sauce'
+          },
+          {
+            'label': 'Ham and Mushroom',
+            'cost': '8.95£',
+            'desc': 'Ham and Mushroom'
+          },
+          {
+            'label': 'Hawaiian',
+            'cost': '8.95£',
+            'desc': 'Ham and pineapple'
+          },
+          {
+            'label': 'American Hot',
+            'cost': '9.50£',
+            'desc': 'Onions, Green Peppers, Chilli And Pepperoni'
+          },
+          {
+            'label': 'Meat Feast',
+            'cost': '9.50£',
+            'desc': 'Ham, Beef, Pepperoni And Bacon'
+          },
+          {
+            'label': 'Four Season',
+            'cost': '9.50£',
+            'desc': 'Onions, Green Pepper, Mushrooms, Pepperoni And Spicy Beef'
+          },
+          {
+            'label': 'Pepperoni Lover',
+            'cost': '9.50£',
+            'desc': 'Double Cheese And Double Pepperoni'
+          },
+          {
+            'label': 'Bbq Chicken',
+            'cost': '9.50£',
+            'desc': 'Bbq Sauce, Onions, Chicken And Green Peppers'
+          },
+          {
+            'label': 'Vegetarian',
+            'cost': '9.50£',
+            'desc': 'Onions, Green Peppers, Sweetcorn And Mushrooms'
+          },
+          {
+            'label': 'Vegie Sorrento',
+            'cost': '9.50£',
+            'desc': 'Baby Spinach, Cherry Tomato, Black Olives, Fetta Cheese'
+          }
+        ]
       },
       {
-        'name': 'Mc Donald\'s',
-        'stars': 3,
-        'type': 'Burgers and Fries',
-        'image': 'statics/food66.jpeg',
-        'short-text': 'Fast Food Joint'
-      },
-      {
-        'name': 'Cafe Basilico',
+        'name': 'Eat Fan',
         'stars': 4,
-        'type': 'Italian, Cafe',
-        'image': 'statics/food77.jpeg',
-        'short-text': 'Small plates, salads & sandwiches in an intimate setting.'
+        'type': 'Asian Cuisine',
+        'image': 'statics/food22.jpg',
+        'short-text': 'Authentic asian food',
+        'menu': [
+          {
+            'label': 'Box 1',
+            'cost': '7£',
+            'desc': 'Sautéed shredded pork, mu-er and bamboo shoots in spicy and sweet & sour sauce, dry-fried green beans. Served with Rice'
+          },
+          {
+            'label': 'Box 2',
+            'cost': '7£',
+            'desc': 'Korean Beef Bibimbap'
+          },
+          {
+            'label': 'Box 3',
+            'cost': '7£',
+            'desc': 'Authentic Taiwanese Braised Pork with Pak Choi and Marinated Egg, Served with Jasmine Rice'
+          },
+          {
+            'label': 'Box 4',
+            'cost': '7£',
+            'desc': 'Braised Pork with Marinated Egg, beancurd, Fried Pak Choi in light Oyster sauce, Served with Rice'
+          },
+          {
+            'label': 'Box 5',
+            'cost': '7£',
+            'desc': 'Hong Kong style Boiled Corn-fed Chicken,  Ginger and Spring Onion sauce, Thai Shallot Spicy Sauce, Garlic Infused brocolli'
+          },
+          {
+            'label': 'Box 6',
+            'cost': '7£',
+            'desc': 'Stir-fried green beans with minced pork & olive, Chinese classic stir-fried tomato & eggs with rice'
+          }
+        ]
       },
       {
         'name': 'Lime Road',
@@ -172,10 +238,20 @@ export default {
         'name': 'Yellow Pepper',
         'stars': 5,
         'type': 'Ethiopian',
-        'image': 'statics/food22.jpg',
+        'image': 'statics/food66.jpg',
         'short-text': 'Authentic ethiopian cuisine'
       }
       ]
+    }
+  },
+  methods: {
+    openRestaurant: function (restaurant) {
+      this.$router.push({
+        name: 'restaurant',
+        params: {
+          restaurant: restaurant
+        }
+      })
     }
   }
 }
@@ -191,7 +267,7 @@ export default {
   background-repeat: no-repeat;
   height: 40vh;
   color: white;
-  font-size: 10em;
+  font-size: 9em;
   text-align: center;
 }
 .food-1 {
@@ -213,6 +289,7 @@ export default {
 }
 .q-card {
   width: calc(25% - 20px);
+  min-height: 215px;
 }
 .q-card-media > img {
   height: 230px; 
@@ -225,10 +302,15 @@ export default {
     font-size: 1em;
   }
   .food {
-    font-size: 4em;
+    font-size: 3em;
   }
   .q-card {
     width: calc(100% - 20px);
+  }
+}
+@media (device-width: 768px) {
+  .q-card {
+    width: calc(50% - 20px);
   }
 }
 </style>

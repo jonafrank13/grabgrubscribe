@@ -3,11 +3,11 @@
     <q-toolbar color="primary" slot="header">
       <q-btn flat>
         <router-link :to="'/'">
-          <img class="logo" src="~assets/grab.png">
+          <img class="logo" src="~assets/logo.jpeg">
         </router-link>
       </q-btn>
       <q-toolbar-title>
-        Grab GrubScribe
+        Eat As You Go
       </q-toolbar-title>
       <q-btn flat>
         <router-link :to="'book'">
@@ -41,23 +41,22 @@
         <googlemaps-map class="map" :center.sync="center" :zoom="12" @idle="onIdle">
           <!-- User Position -->
           <googlemaps-user-position @update:position="setUserPosition" />
+          <googlemaps-marker title="Sunny's olive tree" :position="{ lat: 51.523993, lng: -0.092951 }" />
+          <googlemaps-marker title="Barbican Express" :position="{ lat: 51.523046, lng: -0.092864 }" />
+          <googlemaps-marker title="Eat fan" :position="{ lat: 51.505480, lng: -0.024091 }" />
         </googlemaps-map>
         <!-- Places list -->
-        <googlemaps-nearby-places class="results-pane" ref="results" :request="nearbyRequest" :filter="result => !result.types.includes('hotel')">
-          <template scope="props">
-            <q-list inset-separator class="q-mt-md">
-              <q-list-header>Restaurants Nearby</q-list-header>
-              <q-item v-for="result of props.results" :key="result.id">
-                <q-item-side v-if="result.photos" :avatar="result.photos[0].getUrl({ maxWidth: 80, maxHeight: 80 })" />
-                <q-item-side v-else avatar="~assets/place.png" />
-                <q-item-main>
-                  <q-item-tile label lines="1"> {{ result.name }} </q-item-tile>
-                  <q-item-tile label lines="2"> {{ result.vicinity }} </q-item-tile>
-                </q-item-main>
-              </q-item>
-            </q-list>
-          </template>
-        </googlemaps-nearby-places>
+        <q-list inset-separator class="q-mt-md results-pane">
+          <q-list-header>Restaurants Nearby</q-list-header>
+          <q-item v-for="restaurant of restaurants" :key="restaurant.name" @click="openRestaurant(restaurant)">
+            <q-item-side v-if="restaurant.image" :avatar="restaurant.image" />
+            <q-item-side v-else avatar="~assets/place.png" />
+            <q-item-main>
+              <q-item-tile label lines="1"> {{ restaurant.name }} </q-item-tile>
+              <q-item-tile label lines="2"> {{ restaurant.type }} </q-item-tile>
+            </q-item-main>
+          </q-item>
+        </q-list>
       </div>
     </div>
   </q-layout>
@@ -94,20 +93,134 @@ export default {
   data () {
     return {
       center: {
-        lat: 51.5074,
-        lng: 0.1278
+        lat: 51.52300,
+        lng: -0.092800
       },
       searchBounds: null,
-      userPosition: null
-    }
-  },
-  computed: {
-    nearbyRequest () {
-      if (this.searchBounds) {
-        return {
-          bounds: this.searchBounds
-        }
+      userPosition: null,
+      restaurants: [{
+        'name': 'Sunny\'s olive Tree',
+        'stars': 4,
+        'type': 'Salads',
+        'image': 'statics/food44.jpeg',
+        'short-text': 'Small plates and yummy salads in an intimate setting.',
+        'menu': [
+          {
+            'label': 'Salad Box',
+            'cost': '4£',
+            'desc': 'Salad box comes with half a slice of bread (Lettuce, mix cabbage, red pepper, potato salad, hummas, sundried tomatoes, 1Dolmades, couscous, mix beans, greek salad)'
+          },
+          {
+            'label': 'Greek Salad',
+            'cost': '3£',
+            'desc': 'Lettuce, mix cabbage, red pepper, sundried tomatoes'
+          },
+          {
+            'label': 'Coriander Salad',
+            'cost': '3£',
+            'desc': 'Tomato and Red Onion'
+          }
+        ]
+      },
+      {
+        'name': 'Barbican Express',
+        'stars': 4.5,
+        'type': 'Pizzas',
+        'image': 'statics/food1.jpg',
+        'short-text': 'Best Pizzas in London',
+        'menu': [
+          {
+            'label': 'Margherita',
+            'cost': '7.95£',
+            'desc': 'Cheese and Tomato Sauce'
+          },
+          {
+            'label': 'Ham and Mushroom',
+            'cost': '8.95£',
+            'desc': 'Ham and Mushroom'
+          },
+          {
+            'label': 'Hawaiian',
+            'cost': '8.95£',
+            'desc': 'Ham and pineapple'
+          },
+          {
+            'label': 'American Hot',
+            'cost': '9.50£',
+            'desc': 'Onions, Green Peppers, Chilli And Pepperoni'
+          },
+          {
+            'label': 'Meat Feast',
+            'cost': '9.50£',
+            'desc': 'Ham, Beef, Pepperoni And Bacon'
+          },
+          {
+            'label': 'Four Season',
+            'cost': '9.50£',
+            'desc': 'Onions, Green Pepper, Mushrooms, Pepperoni And Spicy Beef'
+          },
+          {
+            'label': 'Pepperoni Lover',
+            'cost': '9.50£',
+            'desc': 'Double Cheese And Double Pepperoni'
+          },
+          {
+            'label': 'Bbq Chicken',
+            'cost': '9.50£',
+            'desc': 'Bbq Sauce, Onions, Chicken And Green Peppers'
+          },
+          {
+            'label': 'Vegetarian',
+            'cost': '9.50£',
+            'desc': 'Onions, Green Peppers, Sweetcorn And Mushrooms'
+          },
+          {
+            'label': 'Vegie Sorrento',
+            'cost': '9.50£',
+            'desc': 'Baby Spinach, Cherry Tomato, Black Olives, Fetta Cheese'
+          }
+        ]
+      },
+      {
+        'name': 'Eat Fan',
+        'stars': 4,
+        'type': 'Asian Cuisine',
+        'image': 'statics/food22.jpg',
+        'short-text': 'Authentic asian food',
+        'menu': [
+          {
+            'label': 'Box 1',
+            'cost': '7£',
+            'desc': 'Sautéed shredded pork, mu-er and bamboo shoots in spicy and sweet & sour sauce, dry-fried green beans. Served with Rice'
+          },
+          {
+            'label': 'Box 2',
+            'cost': '7£',
+            'desc': 'Korean Beef Bibimbap'
+          },
+          {
+            'label': 'Box 3',
+            'cost': '7£',
+            'desc': 'Authentic Taiwanese Braised Pork with Pak Choi and Marinated Egg, Served with Jasmine Rice'
+          },
+          {
+            'label': 'Box 4',
+            'cost': '7£',
+            'desc': 'Braised Pork with Marinated Egg, beancurd, Fried Pak Choi in light Oyster sauce, Served with Rice'
+          },
+          {
+            'label': 'Box 5',
+            'cost': '7£',
+            'desc': 'Hong Kong style Boiled Corn-fed Chicken,  Ginger and Spring Onion sauce, Thai Shallot Spicy Sauce, Garlic Infused brocolli'
+          },
+          {
+            'label': 'Box 6',
+            'cost': '7£',
+            'desc': 'Stir-fried green beans with minced pork & olive, Chinese classic stir-fried tomato & eggs with rice'
+          }
+        ]
       }
+      ]
     }
   },
   methods: {
@@ -118,10 +231,17 @@ export default {
     },
     onIdle (map) {
       this.searchBounds = map.getBounds()
-      this.$refs.results.$el.scrollTop = 0
     },
     setUserPosition (position) {
       this.userPosition = position
+    },
+    openRestaurant: function (restaurant) {
+      this.$router.push({
+        name: 'restaurant',
+        params: {
+          restaurant: restaurant
+        }
+      })
     }
   }
 }
@@ -136,19 +256,16 @@ export default {
   display: flex;
   flex-direction: column;
 }
-
 .panes {
   flex: 1;
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
-
 .map {
   flex: 1;
   height: calc(100vh - 64px);
 }
-
 .results-pane {
   overflow-x: auto;
   overflow-y: auto;

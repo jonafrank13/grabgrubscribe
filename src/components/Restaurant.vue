@@ -3,11 +3,11 @@
     <q-toolbar color="primary" slot="header">
       <q-btn flat>
         <router-link :to="'/'">
-          <img class="logo" src="~assets/grab.png">
+          <img class="logo" src="~assets/logo.jpeg">
         </router-link>
       </q-btn>
       <q-toolbar-title>
-        Grab GrubScribe
+        Eat As You Go
       </q-toolbar-title>
       <q-btn flat>
         <router-link :to="'book'">
@@ -36,25 +36,17 @@
                 <img :src="restaurant.image" >
             </div>
             <div class="right-side">
-                <q-btn fab round color="primary" icon="place" class="absolute" style="top: 30px; right: 8px; transform: translateY(-50%);" />
+                <q-btn fab round color="primary" icon="place" class="absolute" style="bottom: -10px; right: 8px; transform: translateY(-50%);" />
                 <div class="ellipsis">{{restaurant.name}}</div>
                 <q-rating slot="subtitle" v-model="restaurant.stars" :max="5" />
             </div>
         </div>
-        <q-field
-            icon="cloud"
-            label="Dish"
-            helper="Pick the dish you want to order"
-        >
-        <q-option-group
-          type="radio"
-          v-model="dish"
-          :options="[
-            { label: 'Burger', value: 'burger', color: 'amber' },
-            { label: 'Pasta', value: 'pasta', color: 'secondary' }
-          ]"
-        />
-      </q-field>
+        <q-list>
+          <q-collapsible v-for="dish in restaurant.menu" :key="restaurant.name" icon="local_dining" :label="dish.label" :sublabel="dish.cost">
+            <div>{{dish.desc}}</div>
+            <q-btn color="secondary" icon-right="shopping_cart">Order</q-btn>
+          </q-collapsible>
+        </q-list>
     </div>
   </q-layout>
 </template>
@@ -63,70 +55,66 @@
 import {
   QLayout,
   QToolbar,
+  QRating,
   QToolbarTitle,
   QBtn,
   QIcon,
-  QCarousel,
-  QCard,
-  QCardTitle,
-  QCardMedia,
-  QRating,
-  QCardMain,
-  QCardActions,
-  QCardSeparator,
-  QField,
-  QOptionGroup
+  QList,
+  QCollapsible
 } from 'quasar'
 
 export default {
-  name: 'index',
+  name: 'restaurant',
   components: {
     QLayout,
     QToolbar,
+    QRating,
     QToolbarTitle,
     QBtn,
     QIcon,
-    QCarousel,
-    QCard,
-    QCardTitle,
-    QCardMedia,
-    QRating,
-    QCardMain,
-    QCardActions,
-    QCardSeparator,
-    QField,
-    QOptionGroup
+    QList,
+    QCollapsible
   },
   data () {
     return {
-      restaurant: {
-        'name': 'Taste of India',
-        'stars': 4,
-        'type': 'Indian',
-        'image': 'statics/food44.jpeg',
-        'short-text': 'Spicy, mouth watering food from India'
-      },
-      dish: 'burger'
+      restaurant: {}
     }
+  },
+  created: function () {
+    if (!this.$route.params.restaurant) {
+      this.$router.push({path: '/'})
+    }
+    this.restaurant = this.$route.params.restaurant
   }
 }
 </script>
-<style>
+<style scoped>
 .logo {
   width: 50px;
   height: 50px;
 }
 .banner {
-    width:100%;
-    display: flex;
-    flex-flow: row;
-    padding: 10px;
-    background: #011427;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  padding: 10px;
+  background: #011427;
+  position: relative;
 }
 .right-side {
-    padding: 10px;
+  padding: 10px;
 }
 .ellipsis {
-    color: white;
+  color: white;
+}
+.left-side {
+  max-height: 200px;
+  max-width: 350px;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .left-side {
+    width: 50%;
+  }
 }
 </style>
