@@ -30,7 +30,7 @@
         </router-link>
       </q-btn>
     </q-toolbar>
-    <div>
+    <div v-if="restaurant">
         <div class="banner">
             <div class="left-side">
                 <img :src="restaurant.image" >
@@ -42,9 +42,9 @@
             </div>
         </div>
         <q-list>
-          <q-collapsible v-for="dish in restaurant.menu" :key="restaurant.name" icon="local_dining" :label="dish.label" :sublabel="dish.cost">
-            <div>{{dish.desc}}</div>
-            <q-btn color="secondary" icon-right="shopping_cart">Order</q-btn>
+          <q-collapsible v-for="dish in restaurant.menu" :opened="true" icon="local_dining" :label="dish.label" :sublabel="dish.cost">
+            <div style="padding: 10px 0px;">{{dish.desc}}</div>
+            <q-btn color="secondary" :outline="true" @click="$router.push('/payment')" icon-right="shopping_cart">Order</q-btn>
           </q-collapsible>
         </q-list>
     </div>
@@ -80,7 +80,7 @@ export default {
       restaurant: {}
     }
   },
-  created: function () {
+  beforeMount: function () {
     if (!this.$route.params.restaurant) {
       this.$router.push({path: '/'})
     }

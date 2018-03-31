@@ -38,7 +38,7 @@
       </div>
       <div class="panes">
         <!-- Map -->
-        <googlemaps-map class="map" :center.sync="center" :zoom="12" @idle="onIdle">
+        <googlemaps-map class="map" :center.sync="center" :zoom="12">
           <!-- User Position -->
           <googlemaps-user-position @update:position="setUserPosition" />
           <googlemaps-marker title="Sunny's olive tree" :position="{ lat: 51.523993, lng: -0.092951 }" />
@@ -228,9 +228,6 @@ export default {
       if (this.userPosition) {
         this.center = this.userPosition
       }
-    },
-    onIdle (map) {
-      this.searchBounds = map.getBounds()
     },
     setUserPosition (position) {
       this.userPosition = position
