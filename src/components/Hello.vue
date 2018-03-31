@@ -238,7 +238,7 @@ export default {
         'name': 'Yellow Pepper',
         'stars': 5,
         'type': 'Ethiopian',
-        'image': 'statics/food66.jpg',
+        'image': 'statics/food66.jpeg',
         'short-text': 'Authentic ethiopian cuisine'
       }
       ]
