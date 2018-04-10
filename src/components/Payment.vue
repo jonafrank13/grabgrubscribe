@@ -61,8 +61,8 @@
                 </q-item-side>
                 <q-item-side icon="assignment" inverted color="primary" />
                 <q-item-main>
-                    <q-item-tile label>Net Banking</q-item-tile>
-                    <q-item-tile sublabel>Netbanking Payment</q-item-tile>
+                    <q-item-tile label>Paypal</q-item-tile>
+                    <q-item-tile sublabel>Paypal Payment</q-item-tile>
                 </q-item-main>
             </q-item>
           </q-list>
