@@ -75,6 +75,8 @@
           <p>Awesome, Your order is now confirmed!</p>
           <p>Please show this code at the restaurant to collect the order</p>
           <h3>AX0145B2444</h3>
+          <h5 style="color: #666666;">Please show this emoji if required</h5>
+          <div class="emoji"></div>
         </q-step>
       </q-stepper>
   </q-layout>
@@ -134,5 +136,11 @@ export default {
 .logo {
   width: 50px;
   height: 50px;
+}
+.emoji {
+  background: url("../assets/cool.png");
+  width: 50px;
+  height: 50px;
+  background-size: contain;
 }
 </style>

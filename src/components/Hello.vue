@@ -267,7 +267,7 @@ export default {
   background-repeat: no-repeat;
   height: 40vh;
   color: white;
-  font-size: 9em;
+  font-size: 7em;
   text-align: center;
 }
 .food-1 {
