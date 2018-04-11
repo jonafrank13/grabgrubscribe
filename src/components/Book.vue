@@ -2,7 +2,7 @@
   <q-layout ref="layout">
     <q-toolbar color="primary" slot="header">
       <q-btn flat>
-        <router-link :to="'/'">
+        <router-link :to="'landing'">
           <img class="logo" src="~assets/logo.png">
         </router-link>
       </q-btn>
