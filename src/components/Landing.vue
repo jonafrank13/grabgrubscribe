@@ -2,7 +2,7 @@
    <div class="full">
        <div class="center">
            <div class="icon"></div>
-           <q-input class="pincode" type="number" v-model="pincode" placeholder="Enter Postcode" inverted :after="[{icon: 'forward', handler () { $router.push('/landing') }}]" />
+           <q-input class="pincode" v-model="pincode" placeholder="Enter Postcode" color="deep-purple" inverted :after="[{icon: 'forward', handler () { $router.push('/landing') }}]" />
            <h2>1.Choose</h2>
            <h2>2.Buy</h2>
            <h2>3.Get Code</h2>
@@ -44,6 +44,8 @@ export default {
 h2 {
   font-family: 'Alfa Slab One', cursive;
   font-weight: bolder;
-  color: blueviolet;
+background: linear-gradient(to right, #b078fb 0%, #170131 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 </style>
