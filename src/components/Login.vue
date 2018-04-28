@@ -75,11 +75,11 @@
           password: this.credentials.password
         }
         if (this.isLoginMode) {
-          auth.login(this, credentials, '/')
+          auth.login(this, credentials, '/landing')
         }
         else {
           credentials.email = this.credentials.email
-          auth.signup(this, credentials, '/')
+          auth.signup(this, credentials, '/landing')
         }
       }
     }

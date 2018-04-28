@@ -2,8 +2,8 @@
   <q-layout ref="layout">
     <q-toolbar color="primary" slot="header">
       <q-btn flat>
-        <router-link :to="'/'">
-          <img class="logo" src="~assets/logo.jpeg">
+        <router-link :to="'landing'">
+          <img class="logo" src="~assets/logo.png">
         </router-link>
       </q-btn>
       <q-toolbar-title>
@@ -267,7 +267,7 @@ export default {
   background-repeat: no-repeat;
   height: 40vh;
   color: white;
-  font-size: 9em;
+  font-size: 7em;
   text-align: center;
 }
 .food-1 {

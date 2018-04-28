@@ -2,8 +2,8 @@
   <q-layout ref="layout">
     <q-toolbar color="primary" slot="header">
       <q-btn flat>
-        <router-link :to="'/'">
-          <img class="logo" src="~assets/logo.jpeg">
+        <router-link :to="'landing'">
+          <img class="logo" src="~assets/logo.png">
         </router-link>
       </q-btn>
       <q-toolbar-title>
@@ -61,8 +61,8 @@
                 </q-item-side>
                 <q-item-side icon="assignment" inverted color="primary" />
                 <q-item-main>
-                    <q-item-tile label>Net Banking</q-item-tile>
-                    <q-item-tile sublabel>Netbanking Payment</q-item-tile>
+                    <q-item-tile label>Paypal</q-item-tile>
+                    <q-item-tile sublabel>Paypal Payment</q-item-tile>
                 </q-item-main>
             </q-item>
           </q-list>
@@ -75,6 +75,8 @@
           <p>Awesome, Your order is now confirmed!</p>
           <p>Please show this code at the restaurant to collect the order</p>
           <h3>AX0145B2444</h3>
+          <h5 style="color: #666666;">Please show this emoji if required</h5>
+          <div class="emoji"></div>
         </q-step>
       </q-stepper>
   </q-layout>
@@ -134,5 +136,11 @@ export default {
 .logo {
   width: 50px;
   height: 50px;
+}
+.emoji {
+  background: url("../assets/cool.png");
+  width: 50px;
+  height: 50px;
+  background-size: contain;
 }
 </style>
