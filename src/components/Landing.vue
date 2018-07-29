@@ -44,7 +44,7 @@ export default {
 h2 {
   font-family: 'Alfa Slab One', cursive;
   font-weight: bolder;
-background: linear-gradient(to right, #b078fb 0%, #170131 100%);
+  background: linear-gradient(to right, #b078fb 0%, #170131 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }

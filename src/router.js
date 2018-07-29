@@ -30,6 +30,7 @@ export default new VueRouter({
     { path: '/book', component: load('Book') },
     { path: '/login', component: load('Login') },
     { path: '/payment', component: load('Payment') },
+    { path: '/plan', component: load('Plan') },
     { name: 'restaurant', path: '/restaurant', component: load('Restaurant') },
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found

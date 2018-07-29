@@ -10,7 +10,7 @@
         Eat As You Go
       </q-toolbar-title>
       <q-btn flat>
-        <router-link :to="'book'">
+        <router-link :to="'plan'">
           <q-icon name="help" />
         </router-link>
       </q-btn>
