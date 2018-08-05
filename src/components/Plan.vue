@@ -30,7 +30,7 @@
         </router-link>
       </q-btn>
     </q-toolbar>
-    
+    <div class="wrapper">
     <div class="content">
       <div class="timing">
         <q-btn outline="true" rounded="true" @click="chooseTiming('all')">All</q-btn>
@@ -57,6 +57,7 @@
             <q-radio v-if="time =='all' || time == 'postl'" v-model="postOpt[n-1]" :val="item.label" color="light-blue" label="Post Lunch" />
           </div>
       </div>
+    </div>
     </div>
   </q-layout>
 </template>
@@ -138,14 +139,19 @@ export default {
   width: 50px;
   height: 50px;
 }
-.content {
+.wrapper {
+    width: 100vw;
     overflow-x: scroll;
+    position: relative;
+}
+.content {
+  overflow: visible;
 }
 .timing {
   display: flex;
   flex-flow: row;
   justify-content: center;
-  background-color: #dfdfdf;
+  max-width: 100vw;
 }
 .roww, .coll {
     display: flex;
@@ -189,5 +195,10 @@ export default {
   background-color: #ff6f00;
   color: white;
   text-align: center;
+}
+@media (max-width: 600px) {
+  .content {
+    width: 500%;
+  }
 }
 </style>

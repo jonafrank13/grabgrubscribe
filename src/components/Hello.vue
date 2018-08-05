@@ -9,6 +9,12 @@
       <q-toolbar-title>
         Eat As You Go
       </q-toolbar-title>
+      <q-search inverted color="red-9" icon="restaurant_menu" v-model="search" />
+      <q-btn flat>
+        <router-link :to="'add-restaurant'">
+          <q-icon name="note_add" />
+        </router-link>
+      </q-btn>
       <q-btn flat>
         <router-link :to="'plan'">
           <q-icon name="help" />
@@ -82,7 +88,8 @@ import {
   QRating,
   QCardMain,
   QCardActions,
-  QCardSeparator
+  QCardSeparator,
+  QSearch
 } from 'quasar'
 
 export default {
@@ -100,7 +107,8 @@ export default {
     QRating,
     QCardMain,
     QCardActions,
-    QCardSeparator
+    QCardSeparator,
+    QSearch
   },
   data () {
     return {
