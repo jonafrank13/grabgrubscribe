@@ -9,7 +9,6 @@
       <q-toolbar-title>
         Eat As You Go
       </q-toolbar-title>
-      <q-search inverted color="red-9" icon="restaurant_menu" v-model="search" />
       <q-btn flat>
         <router-link :to="'add-restaurant'">
           <q-icon name="note_add" />
@@ -49,6 +48,9 @@
           Everyday
         </div>
       </q-carousel>
+      <q-toolbar>
+        <q-search inverted color="red-9" icon="restaurant_menu" v-model="search" />
+      </q-toolbar>
       <q-card v-for="restaurant in restaurants" :key="restaurant.name" @click="openRestaurant(restaurant)" inline class="bigger q-ma-sm">
         <q-card-media>
           <img :src="restaurant.image" >
@@ -320,5 +322,11 @@ export default {
   .q-card {
     width: calc(50% - 20px);
   }
+}
+.q-search {
+  max-width: 80%;
+}
+.q-toolbar {
+  justify-content: center;
 }
 </style>

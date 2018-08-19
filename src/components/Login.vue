@@ -2,7 +2,7 @@
     <div class="center">
         <div class="inner">
         <div>
-            <q-toggle v-model="isLoginMode" color="secondary" left-label=true keep-color=true label="Sign up" />
+            <q-toggle v-model="isLoginMode" color="secondary" left-label="true" keep-color=true label="Sign up" />
             <span class="q-option-label">Login</span>
         </div>
         <h2 v-if="isLoginMode">Log In</h2>
@@ -48,6 +48,7 @@
             <span v-if="isLoginMode">Login</span>
             <span v-else>Sign Up</span>
         </button>
+        <button><router-link :to="'landing'">Cancel</router-link></button>
         </div>
     </div>
   </template>
@@ -87,6 +88,9 @@
   }
   </script>
   <style scoped>
+  h2 {
+      font-size: 2rem;
+  }
   .center {
       display: flex;
       flex-flow: column;
@@ -108,8 +112,9 @@
       background: white;
       border: 1px solid #dfdfdf;
       border-radius: 10px;
-      padding: 50px;
+      padding: 30px;
       box-shadow: 0 0 40px 4px #111118;
+      overflow: auto;
   }
   .inner > * {
       margin: auto;
