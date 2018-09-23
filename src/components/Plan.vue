@@ -31,7 +31,33 @@
       </q-btn>
     </q-toolbar>
     <div class="wrapper">
-    
+    <div class="content">
+      <div class="timing">
+        <q-btn :outline=true :rounded=true @click="chooseTiming('all')">All</q-btn>
+        <q-btn :outline=true :rounded=true @click="chooseTiming('morn')">Morning</q-btn>
+        <q-btn :outline=true :rounded=true @click="chooseTiming('lunch')">Lunch</q-btn>
+        <q-btn :outline=true :rounded=true @click="chooseTiming('postl')">Post Lunch</q-btn>
+      </div>
+      <div class="roww header">
+          <div class="coll" v-for="col in columns" :key="col.label">{{col.label}}</div>
+      </div>
+      <div class="roww" v-for="item in menu" :key="item.label">
+          <div class="coll">{{item.label}}</div>
+          <div class="coll" v-for="n in 7">
+            <q-checkbox v-if="time =='all' || time == 'morn'" v-model="mornOpt[n-1]" :val="item.label" label="Morning" />
+            <q-checkbox v-if="time =='all' || time == 'lunch'" v-model="lunchOpt[n-1]" :val="item.label" color="red" label="Lunch" />
+            <q-checkbox v-if="time =='all' || time == 'postl'" v-model="postOpt[n-1]" :val="item.label" color="light-blue" label="Post Lunch" />
+          </div>
+      </div>
+      <div class="roww discount" v-for="item in discounts" :key="item.label">
+          <div class="coll">{{item.label}}</div>
+          <div class="coll" v-for="n in 7">
+            <q-checkbox v-if="time =='all' || time == 'morn'" v-model="mornOpt[n-1]" :val="item.label" label="Morning" />
+            <q-checkbox v-if="time =='all' || time == 'lunch'" v-model="lunchOpt[n-1]" :val="item.label" color="red" label="Lunch" />
+            <q-checkbox v-if="time =='all' || time == 'postl'" v-model="postOpt[n-1]" :val="item.label" color="light-blue" label="Post Lunch" />
+          </div>
+      </div>
+    </div>
     </div>
   </q-layout>
 </template>

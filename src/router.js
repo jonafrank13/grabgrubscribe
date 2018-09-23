@@ -31,6 +31,8 @@ export default new VueRouter({
     { path: '/login', component: load('Login') },
     { path: '/payment', component: load('Payment') },
     { path: '/plan', component: load('Plan') },
+    { path: '/deal', component: load('Deal') },
+    { path: '/user', component: load('User') },
     { name: 'restaurant', path: '/restaurant', component: load('Restaurant') },
     { name: 'addrestaurant', path: '/add-restaurant', component: load('AddRestaurant') },
     // Always leave this last one
